@@ -32,19 +32,7 @@ function App() {
             }}
           >
             {" "}
-            {post.platform} <br /> {post.name} <br /> {post.link} <br />
-            <button
-              onClick={() => {
-                axios.post(
-                  "https://61c0c1e233f24c00178235e6.mockapi.io/post/" + post.id,
-                  {
-                    didReported: true,
-                  }
-                );
-              }}
-            >
-              {post.didReported === true ? "unReport" : "report"}
-            </button>
+            {post.platform} <br /> {post.name} <br /> {post.link}{" "}
           </div>
         );
       })}
