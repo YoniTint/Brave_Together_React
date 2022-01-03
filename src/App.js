@@ -1,61 +1,23 @@
 import React from "react";
 import axios from "axios";
+import SideBar from "./Components/SideBar";
+import Validate from "./Components/Validate/Validate";
 
 function App() {
-  const [posts, setPosts] = React.useState([]);
-
-  //to run only once, and not in every render!
-  React.useEffect(() => {
-    getData();
-  }, []);
-
-  async function getData() {
-    const response = await axios(
-      "https://61c0c1e233f24c00178235e6.mockapi.io/post"
-    );
-    const postList = response.data;
-
-    setPosts(postList);
-  }
+  //declare a new state variable
 
   return (
-    <div style={mainPage}>
-      <div style={{ fontSize: 48 }}>מצעד הגבורה</div>
-      {posts.length === 0 && <div>Loading...</div>}
-      {posts.map((post) => {
-        return (
-          <div
-            style={{
-              fontSize: 32,
-              border: "1px solid white",
-              marginBottom: 12,
-            }}
-          >
-            {" "}
-            {post.platform} <br /> {post.name} <br /> {post.link} <br />
-            <button
-              onClick={() => {
-                axios.post(
-                  "https://61c0c1e233f24c00178235e6.mockapi.io/post/" + post.id,
-                  {
-                    didReported: true,
-                  }
-                );
-              }}
-            >
-              {post.didReported === true ? "unReport" : "report"}
-            </button>
-          </div>
-        );
-      })}
+    <div style={mainPageStyle}>
+      <div style={{ display: "flex", height: "100vh" }}>
+        {" "}
+        <SideBar />
+        <Validate />
+      </div>
     </div>
   );
 }
 
-export default App;
-
-const mainPage = {
+const mainPageStyle = {
   textAlign: "center",
-  padding: 24,
-  color: "rgba(210,210,210)",
 };
+export default App;
