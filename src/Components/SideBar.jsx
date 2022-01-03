@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function SideBar() {
-  return <div style={sideBarStyle}>SideBar</div>;
+  return <div style={sideBarStyle}>Cool SideBar</div>;
 }
 
 const sideBarStyle = {
