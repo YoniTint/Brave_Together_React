@@ -33,6 +33,7 @@ const imgStyle = {
   marginRight: 12,
 };
 const cardStyle = {
+  textAlign: "left",
   marginTop: 48,
   marginLeft: 45,
   width: 202,
