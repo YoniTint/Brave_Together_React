@@ -6,9 +6,24 @@ export default function SideBar() {
     <div style={sideBarStyle}>
       <div style={partisanStyle}>PARTISANS</div>
       <Badge />
+      <hr style={lineStyle} />
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "stretch",
+        }}
+      >
+        <button>Validate</button>
+        <button>Report</button>
+        <button>My Statistics</button>
+        <button>FAQ</button>
+      </div>
     </div>
   );
 }
+
+const lineStyle = { width: 210, marginTop: 30, opacity: 0.4 };
 
 const partisanStyle = {
   marginTop: 33,
