@@ -1,5 +1,5 @@
 import React from "react";
-import ValidateCard from "./ValidateCard"
+import ValidateCard from "./ValidateCard";
 
 export default function Validate() {
   const amountOfPostsToCheck = 124;//Server input
@@ -15,7 +15,6 @@ export default function Validate() {
      </div>
   
     );
- 
 }
 
 const mainValidateStyle = {
