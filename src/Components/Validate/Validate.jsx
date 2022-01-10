@@ -1,13 +1,12 @@
 import React from "react";
-import ValidateCard from "./ValidateCard"
+import ValidateCard from "./ValidateCard";
 
 export default function Validate() {
-  
-  
-  return( 
-  <div style={validateStyle}> <ValidateCard/></div>
-    );
- 
+  return (
+    <div style={validateStyle}>
+      <ValidateCard />
+    </div>
+  );
 }
 
 const validateStyle = {
