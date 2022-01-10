@@ -7,5 +7,5 @@ export default function Validate() {
 const validateStyle = {
   backgroundColor: "#E5E5E5",
   color: "black",
-  width: "79vw",
+  width: "calc(100% - 300px)",
 };

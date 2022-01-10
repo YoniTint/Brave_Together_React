@@ -1,6 +1,5 @@
 import React from "react";
-import axios from "axios";
-import SideBar from "./Components/SideBar";
+import SideBar from "./Components/SideBar/SideBar";
 import Validate from "./Components/Validate/Validate";
 
 function App() {
@@ -8,7 +7,7 @@ function App() {
 
   return (
     <div style={mainPageStyle}>
-      <div style={{ display: "flex", height: "100vh" }}>
+      <div style={{ display: "flex", height: "100vh", width: "100vw" }}>
         {" "}
         <SideBar />
         <Validate />
@@ -18,6 +17,7 @@ function App() {
 }
 
 const mainPageStyle = {
+  backgroundColor: "rgb(229, 229, 229)",
   textAlign: "center",
 };
 export default App;
