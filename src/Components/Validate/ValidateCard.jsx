@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function ValidateCard() {
-  return <div></div>;
+  return <div>asdasd</div>;
 }
