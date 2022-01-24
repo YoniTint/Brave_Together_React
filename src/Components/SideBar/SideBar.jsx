@@ -1,6 +1,15 @@
 import React from "react";
 import Badge from "./Badge";
+import feed from "./media/feed.png";
+import myActions from "./media/myActions.png";
+import FAQ from "./media/FAQ.svg";
+import { NavButton } from "./NavButton";
 
+const buttons = [
+  { name: "Feed", src: feed, URL: "/feed" },
+  { name: "My Actions", src: myActions, URL: "/actions" },
+  { name: "FAQ", src: FAQ, URL: "/FAQ" },
+];
 export default function SideBar() {
   return (
     <div style={sideBarStyle}>
@@ -14,10 +23,9 @@ export default function SideBar() {
           alignItems: "stretch",
         }}
       >
-        <button>Validate</button>
-        <button>Report</button>
-        <button>My Statistics</button>
-        <button>FAQ</button>
+        {buttons.map((button) => {
+          return <NavButton button={button} />;
+        })}
       </div>
     </div>
   );

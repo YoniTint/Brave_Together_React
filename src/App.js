@@ -1,18 +1,24 @@
 import React from "react";
+import FAQ from "./Components/FAQ";
 import SideBar from "./Components/SideBar/SideBar";
 import Validate from "./Components/Validate/Validate";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   //declare a new state variable
 
   return (
-    <div style={mainPageStyle}>
-      <div style={{ display: "flex", height: "100vh", width: "100vw" }}>
-        {" "}
-        <SideBar />
-        <Validate />
+    <BrowserRouter>
+      <div style={mainPageStyle}>
+        <div style={{ display: "flex", height: "100vh", width: "100vw" }}>
+          <SideBar />
+          <Routes>
+            <Route path="/" element={<Validate />} />
+            <Route path="FAQ" element={<FAQ />} />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </BrowserRouter>
   );
 }
 
