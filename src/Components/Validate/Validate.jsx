@@ -24,13 +24,14 @@ const Wrapper = styled.div`
 
 const ReportCard = styled.div` //Ask yoav about the font family
   height: 33px;
-  width: 470px;
+  width: 451px;
+  padding: 24px;
   margin-top: 45px;
   margin-left: 48px;
   font-family: Inter;
   font-size: 18px;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 600;
   text-align: left;
   line-height: 22px;
   color: #091430;
