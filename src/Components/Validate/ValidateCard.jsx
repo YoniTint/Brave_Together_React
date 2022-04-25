@@ -9,7 +9,6 @@ export default function ValidateCard() {
     <Wrapper>
       <PostInfo platform={"twitter"} date={"21-03-2022"} />
       <Temp/>
-      
       <ListTags arrayTags={["Alon","Ronder","Tag1","Tag2","Tag3","Tag4","Tag5","Tag6","Tag7","Tagggggggggg8"]}/>
       
       <LinkToOriginalPostStyle>See Original Post</LinkToOriginalPostStyle>
@@ -40,7 +39,7 @@ const DecisionButton = styled.div`
 const Temp = styled.div`
   height: 336px;
   width: 451px;
-  margin-top: 12.78%;
+  margin-top: 50px;
   border-radius: 10px;
   background-color: white;
   border-style: solid;

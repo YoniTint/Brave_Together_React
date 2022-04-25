@@ -11,7 +11,7 @@ export default function Validate() {
           {amountOfPostsToCheck} posted are waiting for you to check
         </ReportCard>
       </TopContainerStyle>
-      <ValidateCard />
+      <ValidateCard style={ValidateCardStyle}/>
     </Wrapper>
   );
 }
@@ -23,19 +23,26 @@ const Wrapper = styled.div`
 `;
 
 const ReportCard = styled.div` //Ask yoav about the font family
-  height: 33px;
-  width: 451px;
+  height: 22px;
+  width: 343px;
   padding: 24px;
-  margin-top: 45px;
-  margin-left: 48px;
+  margin-top: 64px;
+  margin-left: 17px;
   font-family: Inter;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
-  text-align: left;
+  align-items: center;
   line-height: 22px;
   color: #091430;
 `;
+const ValidateCardStyle={
+  height: 588,
+  width: 451,
+  padding: 24,
+  marginTop: 68,
+  marginLeft: 45,
+}
 
 const TopContainerStyle = styled.div`
   display: flex;
