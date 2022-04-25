@@ -1,6 +1,6 @@
 import React from "react";
-import checkButton from "./media/IconApprove.svg";
-import offensiveButton from "./media/Button-cancel.svg";
+import checkSafeButton from "./media/IconApprove.svg";
+import checkOffensiveButton from "./media/IconOffensive.svg";
 import styled from "styled-components";
 
 export default function Button({ isOffensive }) {
@@ -8,11 +8,11 @@ export default function Button({ isOffensive }) {
     <div
       style={
         isOffensive
-          ? { ...buttonStyle, backgroundColor: "#FF5B3C" }
+          ? { ...buttonStyle, backgroundColor: "rgba(241, 43, 44, 0.2)" }
           : { ...buttonStyle }
       }
     >
-      <Icon src={isOffensive ? offensiveButton : checkButton} />
+      <Icon src={isOffensive ? checkOffensiveButton : checkSafeButton} />
       {isOffensive ? (
         <span style={offensiveStyle}>Offensive</span>
       ) : (

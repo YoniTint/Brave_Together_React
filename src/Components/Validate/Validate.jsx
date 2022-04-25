@@ -8,10 +8,8 @@ export default function Validate() {
     <Wrapper>
       <TopContainerStyle>
         <ReportCard>
-          {" "}
           {amountOfPostsToCheck} posted are waiting for you to check
         </ReportCard>
-        <div style={viewsStyle}>views</div>
       </TopContainerStyle>
       <ValidateCard />
     </Wrapper>
@@ -24,31 +22,19 @@ const Wrapper = styled.div`
   width: "calc(100% - 300px)";
 `;
 
-const ReportCard = styled.div`
-  height: 33;
-  width: 470;
-  margin-top: 45;
-  margin-left: 48;
-  font-family: Open Sans;
-  font-size: 24;
+const ReportCard = styled.div` //Ask yoav about the font family
+  height: 33px;
+  width: 470px;
+  margin-top: 45px;
+  margin-left: 48px;
+  font-family: Inter;
+  font-size: 18px;
   font-style: normal;
   font-weight: 700;
   text-align: left;
-  line-height: 32.68;
+  line-height: 22px;
+  color: #091430;
 `;
-const viewsStyle = {
-  height: 27,
-  width: 70,
-  borderRadius: 20,
-  padding: 4,
-  marginRight: 69,
-  marginTop: 48,
-  fontFamily: "Open Sans",
-  fontSize: 14,
-  fontStyle: "normal",
-  fontWeight: 600,
-  textAlign: "left",
-};
 
 const TopContainerStyle = styled.div`
   display: flex;

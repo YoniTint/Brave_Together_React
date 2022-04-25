@@ -1,30 +1,37 @@
 import React from "react";
 import Button from "./Button";
+import styled from "styled-components";
 
 export default function ValidateCard() {
   return (
-    <div style={cardStyle}>
-      <div style={buttonsStyle}>
-        <Button />
+    <Wrapper>
+      <Temp></Temp>
+      <DecisionButton>
+        <Button isOffensive={false}/>
         <Button isOffensive={true} />
-      </div>
-    </div>
+      </DecisionButton>
+    </Wrapper>
   );
 }
 
-const cardStyle = {
-  height: 694,
-  width: 499,
-  left: 892,
-  top: 129,
-  borderRadius: 25,
-  padding: 24,
-  border: "solid",
-  backgroundColor: "white",
-};
+const Wrapper = styled.div`
+  height: 694px;
+  width: 499px;
+  border-radius: 25px;
+  padding: 24px;
+  background-color: white;
+`;
 
-const buttonsStyle = {
-  display: "flex",
-  justifyContent: "center",
-  gap: 16,
-};
+const DecisionButton = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+`;
+
+const Temp = styled.div`
+height: 336px;
+width: 451px;
+margin-top: 12.78%;
+border-radius: 10px;
+background-color: black;
+`;
