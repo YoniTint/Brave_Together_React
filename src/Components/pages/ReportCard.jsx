@@ -1,6 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
+const options = [
+  " Minimizing the holocaust",
+  " Disputing facts",
+  "Jews benifit from the holocaust",
+  "Equating Israel to the Nazis",
+];
 export default function ReportCard() {
   return (
     <Wrapper>
@@ -9,25 +15,12 @@ export default function ReportCard() {
       <SubHeader>What defamation did you find here?</SubHeader>
       <Form>
         <List>
-          <ListItem>
-            <Input type="checkbox"></Input>
-            <Label> Minimizing the holocaust</Label>
-          </ListItem>
-
-          <ListItem>
-            <Input type="checkbox"></Input>
-            <Label> Disputing facts</Label>
-          </ListItem>
-
-          <ListItem>
-            <Input type="checkbox"></Input>
-            <Label> Jews benifit from the holocaust</Label>
-          </ListItem>
-
-          <ListItem>
-            <Input type="checkbox"></Input>
-            <Label> Equating Israel to the Nazis</Label>
-          </ListItem>
+          {options.map((option) => (
+            <ListItem key={option}>
+              <Input type="checkbox"></Input>
+              <Label>{option}</Label>
+            </ListItem>
+          ))}
         </List>
 
         <OtherReason>
