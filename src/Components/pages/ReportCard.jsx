@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { Checkbox as MuiCheckbox } from "@mui/material";
 
 const options = [
   " Minimizing the holocaust",
@@ -17,7 +18,7 @@ export default function ReportCard() {
         <List>
           {options.map((option) => (
             <ListItem key={option}>
-              <Input type="checkbox"></Input>
+              <MuiCheckbox size="medium" />
               <Label>{option}</Label>
             </ListItem>
           ))}
@@ -28,9 +29,8 @@ export default function ReportCard() {
           <TextBox placeholder="Type your reason here..."></TextBox>
         </OtherReason>
         <SubmitButton>Submit</SubmitButton>
+        <hr style={{ backgroundColor: "grey", width: 515, marginLeft: 0 }} />
       </Form>
-
-      <hr style={{ backgroundColor: "grey" }} />
     </Wrapper>
   );
 }
@@ -45,9 +45,13 @@ const List = styled.div`
   display: flex;
   flex-direction: column;
 `;
-const Input = styled.input``;
+
 const Label = styled.label`
-  font-weight: 600;
+  /* font-weight: 600;
+  text-align: center; */
+  height: 37px;
+  line-height: 37px;
+  text-align: center;
 `;
 const Form = styled.form`
   display: flex;
@@ -60,6 +64,10 @@ const Wrapper = styled.div`
   background: white;
   width: 40%;
   padding-left: 50px;
+  padding-right: 50px;
+  position: fixed;
+  top: 0px;
+  right: 0px;
 `;
 const Header = styled.h3`
   text-align: left;
