@@ -7,13 +7,11 @@ export default function ValidateCard() {
   return (
     <Wrapper>
       <PostCard arrayTags={["Alon","Ronder","Tag1","Tag2","Tag3","Tag4","Tag5",   "Tag6","Tag7","Tagggggggggg8"]}  platform={"twitter"} date={"21-03-2022"}/>
-      <DecisionBlock>
         <DecisionButton>
           <Button isOffensive={false} />
           <Button isOffensive={true} />
         </DecisionButton>
         <NotSure>NOT SURE</NotSure>
-      </DecisionBlock>
     </Wrapper>
   );
 }
@@ -24,9 +22,6 @@ const Wrapper = styled.div`
   border-radius: 25px;
   padding: 24px;
   background-color: white;
-`;
-
-const DecisionBlock = styled.div`
 `;
 
 const DecisionButton = styled.div`

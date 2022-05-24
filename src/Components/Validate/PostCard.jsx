@@ -6,7 +6,7 @@ import ListTags from "./ListTags";
 export default function PostCard({arrayTags, platform, date, postUrl}) {
     return (
         <Wrapper>
-            <PostInfo  platform={platform} date={date}/>
+            <PostInfo platform={platform} date={date}/>
             <Temp/>
             <ListTags arrayTags={arrayTags} />
             <LinkToOriginalPostStyle>See Original Post</LinkToOriginalPostStyle>
