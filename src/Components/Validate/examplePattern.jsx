@@ -1,4 +1,4 @@
-import React from "react";
+/*import React from "react";
 import ValidateCard from "./ValidateCard";
 import styled from "styled-components";
 import { useQuery } from "react-query";
@@ -58,4 +58,4 @@ const viewsStyle = {
 const TopContainerStyle = styled.div`
   display: flex;
   justify-content: space-between;
-`;
+`;*/

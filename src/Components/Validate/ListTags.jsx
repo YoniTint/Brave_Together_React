@@ -15,9 +15,10 @@ export default function ListTags({ arrayTags }) {
 
 const ListOfTags = styled.div`
   display: flex;
-  justify-content: flex-grow;
-  flex-wrap: wrap;
+  justify-content: flex-grow;/**Make adjustment according to tag size*/
+  flex-wrap: wrap; /**If the length of tags is longer than his wrapper*/
 `;
+
 const Tags = styled.div`
   background-color: rgba(180, 180, 180, 0.4);
   border-radius: 10px;
