@@ -18,7 +18,7 @@ export default function ReportCard() {
         <List>
           {options.map((option) => (
             <ListItem key={option}>
-              <MuiCheckbox size="medium" />
+              <MuiCheckbox style={{ paddingLeft: 0 }} size="medium" />
               <Label>{option}</Label>
             </ListItem>
           ))}
@@ -29,7 +29,15 @@ export default function ReportCard() {
           <TextBox placeholder="Type your reason here..."></TextBox>
         </OtherReason>
         <SubmitButton>Submit</SubmitButton>
-        <hr style={{ backgroundColor: "grey", width: 515, marginLeft: 0 }} />
+        <hr
+          style={{
+            backgroundColor: "grey",
+            width: 515,
+            marginLeft: 0,
+            marginTop: 64,
+            marginBottom: 64,
+          }}
+        />
       </Form>
     </Wrapper>
   );
@@ -60,17 +68,20 @@ const Form = styled.form`
 
 const Wrapper = styled.div`
   display: flex;
+  justify-content: center;
   flex-direction: column;
   background: white;
-  width: 40%;
+  width: 515px;
   padding-left: 50px;
   padding-right: 50px;
   position: fixed;
   top: 0px;
   right: 0px;
+  border-radius: 20px;
 `;
 const Header = styled.h3`
   text-align: left;
+  margin-top: 65px;
 `;
 const SubHeader = styled.h4`
   text-align: left;
@@ -79,6 +90,7 @@ const SubHeader = styled.h4`
 const ListItem = styled.div`
   display: flex;
   margin-bottom: 24px;
+  padding: 0px;
 `;
 const TextBox = styled.textarea`
   resize: none;
@@ -88,6 +100,15 @@ const TextBox = styled.textarea`
   width: 515px;
   height: 98px;
   background: #f7f7f8;
+  ::placeholder,
+  ::-webkit-input-placeholder {
+    padding-left: 36px;
+    padding-top: 14px;
+  }
+  :-ms-input-placeholder {
+    padding-left: 36px;
+    padding-top: 14px;
+  }
 `;
 const SubmitButton = styled.button`
   width: 515px;
