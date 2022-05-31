@@ -43,7 +43,7 @@ const LinkToOriginalPostStyle = styled.div`
  height: 17px;
  font-family: "Open Sans";
  font-size: 14px;
- font-weight: bolder;/**Needs to ask yoav, set to 600 weight doesn't work */
+ font-weight: 600;/**Needs to ask yoav, set to 600 weight doesn't work */
  text-align: center;
  line-height: 17px;
  text-decoration-line: underline;

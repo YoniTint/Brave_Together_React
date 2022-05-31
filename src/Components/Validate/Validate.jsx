@@ -1,17 +1,20 @@
 import React from "react";
 import ValidateCard from "./ValidateCard";
 import styled from "styled-components";
+import useGetPosts from "../Hooks/useGetPosts";
 export default function Validate() {
   const amountOfPostsToCheck = 124; //Server input
-
+const posts= useGetPosts();
   return (
     <Wrapper>
-      <TopContainerStyle>
-        <ReportCard>
+         <ReportCard>
           {amountOfPostsToCheck} posted are waiting for you to check
         </ReportCard>
+      <TopContainerStyle>
+        {posts.data?.data.map(post=>{return <ValidateCard key={post.url} postData={post} style={ValidateCardStyle}/>
+
+       })}
       </TopContainerStyle>
-      <ValidateCard style={ValidateCardStyle}/>
     </Wrapper>
   );
 }
@@ -22,13 +25,13 @@ const Wrapper = styled.div`
   width: "calc(100% - 300px)";
 `;
 
-const ReportCard = styled.div` //Ask yoav about the font family
+const ReportCard = styled.div`
   height: 22px;
   width: 343px;
   padding: 24px;
   margin-top: 64px;
   margin-left: 17px;
-  font-family: Inter;
+  font-family: "open sans";
   font-size: 18px;
   font-style: normal;
   font-weight: 600;

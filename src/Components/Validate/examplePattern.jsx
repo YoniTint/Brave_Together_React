@@ -1,14 +1,14 @@
-/*import React from "react";
+import React from "react";
 import ValidateCard from "./ValidateCard";
 import styled from "styled-components";
 import { useQuery } from "react-query";
+
 import axios from "axios";
-export default function Validate() {
+import useGetPosts from "../Hooks/useGetPosts";
+export default function ExamplePattern() {
   const amountOfPostsToCheck = 124; //Server input
 
-  const query = useQuery("offensive posts", () => {
-    return axios.get("api/posts");
-  });
+  const query = useGetPosts();
 
   console.log(query);
   return (
@@ -58,4 +58,7 @@ const viewsStyle = {
 const TopContainerStyle = styled.div`
   display: flex;
   justify-content: space-between;
-`;*/
+`;
+
+
+
