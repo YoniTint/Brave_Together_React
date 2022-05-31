@@ -31,5 +31,9 @@ createServer({
     this.get("/falfel", ({ db }) => {
       return "this is a falafel";
     });
+
+    this.post("/report", (schema, request) => {
+      return request.requestBody;
+    });
   },
 });

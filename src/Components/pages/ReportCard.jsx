@@ -1,13 +1,20 @@
 import React from "react";
 import styled from "styled-components";
 import { Checkbox as MuiCheckbox } from "@mui/material";
+import PostCard from "../Validate/PostCard";
+import axios from "axios";
+import postReport from "../Hooks/postReport";
 
 const options = [
-  " Minimizing the holocaust",
-  " Disputing facts",
+  "Minimizing the holocaust",
+  "Disputing facts",
   "Jews benifit from the holocaust",
   "Equating Israel to the Nazis",
 ];
+const onHandleSubmit = async () => {
+  const response = await postReport();
+  console.log(response);
+};
 export default function ReportCard() {
   return (
     <Wrapper>
@@ -18,7 +25,7 @@ export default function ReportCard() {
         <List>
           {options.map((option) => (
             <ListItem key={option}>
-              <MuiCheckbox style={{ paddingLeft: 0 }} size="medium" />
+              <MuiCheckbox size="medium" />
               <Label>{option}</Label>
             </ListItem>
           ))}
@@ -28,17 +35,36 @@ export default function ReportCard() {
           <span style={{ textAlign: "left", fontWeight: 600 }}>Other:</span>
           <TextBox placeholder="Type your reason here..."></TextBox>
         </OtherReason>
-        <SubmitButton>Submit</SubmitButton>
+        <SubmitButton onClick={() => onHandleSubmit()}>Submit</SubmitButton>
         <hr
           style={{
             backgroundColor: "grey",
             width: 515,
             marginLeft: 0,
             marginTop: 64,
-            marginBottom: 64,
+            marginBottom: 45,
           }}
         />
       </Form>
+      <h4 style={{ textAlign: "left" }}>Selected Post:</h4>
+
+      <PostCard
+        arrayTags={[
+          "Alon",
+          "Ronder",
+          "Tag1",
+          "Tag2",
+          "Tag3",
+          "Tag4",
+          "Tag5",
+          "Tag6",
+          "Tag7",
+          "Tagggggggggg8",
+        ]}
+        platform={"facebook"}
+        date={"31/05/22"}
+        postUrl={"google.com"}
+      />
     </Wrapper>
   );
 }
@@ -61,22 +87,23 @@ const Label = styled.label`
   line-height: 37px;
   text-align: center;
 `;
-const Form = styled.form`
+const Form = styled.div`
   display: flex;
   flex-direction: column;
 `;
 
 const Wrapper = styled.div`
   display: flex;
+  position: fixed;
+  right: 0;
   justify-content: center;
   flex-direction: column;
+  flex-wrap: wrap;
   background: white;
   width: 515px;
+  height: 133vh;
   padding-left: 50px;
   padding-right: 50px;
-  position: fixed;
-  top: 0px;
-  right: 0px;
   border-radius: 20px;
 `;
 const Header = styled.h3`
