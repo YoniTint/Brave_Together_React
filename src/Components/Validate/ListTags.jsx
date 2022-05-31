@@ -7,13 +7,18 @@ export default function ListTags({ arrayTags }) {
     <ListOfTags>
         {arrayTags.map((tag) => {
           return(<Tags key={tag}> {tag} </Tags>)})}
-    <InfoIcon src={InformationIcon}/>
+    {arrayTags.length > 0 ? <InfoIcon src={InformationIcon}/> : ""}
     </ListOfTags>
     
     );
 }
 
 const ListOfTags = styled.div`
+  height: 83px;
+  overflow: auto;
+  ::-webkit-scrollbar {
+  width: 0px;
+}
   display: flex;
   justify-content: flex-grow;/**Make adjustment according to tag size*/
   flex-wrap: wrap; /**If the length of tags is longer than his wrapper*/

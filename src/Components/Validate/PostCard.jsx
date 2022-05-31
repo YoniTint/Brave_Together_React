@@ -49,6 +49,5 @@ const LinkToOriginalPostStyle = styled.div`
  text-decoration-line: underline;
  color: #2C63FD;
  margin-top: 24px;
- margin-bottom: 24px;
  margin-left: calc(451px / 2 - (180px /2));
 `;

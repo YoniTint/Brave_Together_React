@@ -7,7 +7,7 @@ export default function ValidateCard({postData}) {
   console.log(postData)
   return (
     <Wrapper>
-      <PostCard arrayTags={["Alon","Ronder","Tag1","Tag2","Tag3","Tag4","Tag5",   "Tag6","Tag7","Tagggggggggg8"]}  platform={postData.platform} date={postData.date} postUrl={postData.url}/>
+      <PostCard arrayTags={postData.arrayTags}  platform={postData.platform} date={postData.date} postUrl={postData.url}/>
         <DecisionButton>
           <Button isOffensive={false} />
           <Button isOffensive={true} />
@@ -22,6 +22,8 @@ const Wrapper = styled.div`
   width: 451px;
   border-radius: 25px;
   padding: 24px;
+  margin-top: 44px;
+  margin-left: 21px;
   background-color: white;
 `;
 

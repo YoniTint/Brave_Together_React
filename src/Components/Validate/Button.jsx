@@ -46,6 +46,7 @@ const buttonStyle = {
   flexDirection: "row",
   justifyContent: "center",
   alignItems: "center",
+  cursor: "pointer",
 };
 const Icon = styled.img`
   width: 20px;
