@@ -1,19 +1,20 @@
 import React from "react";
 import ValidateCard from "./ValidateCard";
 import styled from "styled-components";
+import useGetPosts from "../Hooks/useGetPosts";
 export default function Validate() {
   const amountOfPostsToCheck = 124; //Server input
-
+const posts= useGetPosts();
   return (
     <Wrapper>
-      <TopContainerStyle>
-        <ReportCard>
-          {" "}
+         <ReportCard>
           {amountOfPostsToCheck} posted are waiting for you to check
         </ReportCard>
-        <div style={viewsStyle}>views</div>
+      <TopContainerStyle>
+        {posts.data?.data.map(post=>{return <ValidateCard key={post.url} postData={post} style={ValidateCardStyle}/>
+
+       })}
       </TopContainerStyle>
-      <ValidateCard />
     </Wrapper>
   );
 }
@@ -25,30 +26,26 @@ const Wrapper = styled.div`
 `;
 
 const ReportCard = styled.div`
-  height: 33;
-  width: 470;
-  margin-top: 45;
-  margin-left: 48;
-  font-family: Open Sans;
-  font-size: 24;
+  height: 22px;
+  width: 343px;
+  padding: 24px;
+  margin-top: 64px;
+  margin-left: 17px;
+  font-family: "open sans";
+  font-size: 18px;
   font-style: normal;
-  font-weight: 700;
-  text-align: left;
-  line-height: 32.68;
+  font-weight: 600;
+  align-items: center;
+  line-height: 22px;
+  color: #091430;
 `;
-const viewsStyle = {
-  height: 27,
-  width: 70,
-  borderRadius: 20,
-  padding: 4,
-  marginRight: 69,
-  marginTop: 48,
-  fontFamily: "Open Sans",
-  fontSize: 14,
-  fontStyle: "normal",
-  fontWeight: 600,
-  textAlign: "left",
-};
+const ValidateCardStyle={
+  height: 588,
+  width: 451,
+  padding: 24,
+  marginTop: 68,
+  marginLeft: 45,
+}
 
 const TopContainerStyle = styled.div`
   display: flex;
