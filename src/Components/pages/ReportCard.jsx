@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Checkbox as MuiCheckbox } from "@mui/material";
 import PostCard from "../Validate/PostCard";
@@ -11,62 +11,98 @@ const options = [
   "Jews benifit from the holocaust",
   "Equating Israel to the Nazis",
 ];
-const onHandleSubmit = async () => {
-  const response = await postReport();
-  console.log(response);
+const onHandleSubmit = async (URL, reasons, other) => {
+  const response = await postReport(URL, reasons, other);
 };
+const URL = "google.com";
 export default function ReportCard() {
-  return (
-    <Wrapper>
-      <Header>Report Post:</Header>
+  const [formData, setFormData] = useState({});
+  const [didSendForm, setDidSendForm] = useState(false);
 
-      <SubHeader>What defamation did you find here?</SubHeader>
-      <Form>
-        <List>
-          {options.map((option) => (
-            <ListItem key={option}>
-              <MuiCheckbox size="medium" />
-              <Label>{option}</Label>
-            </ListItem>
-          ))}
-        </List>
+  if (didSendForm === false)
+    return (
+      <Wrapper>
+        <Header>Report Post:</Header>
 
-        <OtherReason>
-          <span style={{ textAlign: "left", fontWeight: 600 }}>Other:</span>
-          <TextBox placeholder="Type your reason here..."></TextBox>
-        </OtherReason>
-        <SubmitButton onClick={() => onHandleSubmit()}>Submit</SubmitButton>
-        <hr
-          style={{
-            backgroundColor: "grey",
-            width: 515,
-            marginLeft: 0,
-            marginTop: 64,
-            marginBottom: 45,
-          }}
+        <SubHeader>What defamation did you find here?</SubHeader>
+        <Form>
+          <List>
+            {options.map((option) => (
+              <ListItem key={option}>
+                <MuiCheckbox
+                  name={option}
+                  onChange={(event) => {
+                    const value = event.target.name;
+                    setFormData({
+                      ...formData,
+                      reasons: {
+                        ...formData.reasons,
+                        [event.target.name]: event.target.checked,
+                      },
+                    });
+                  }}
+                  size="medium"
+                />
+                <Label>{option}</Label>
+              </ListItem>
+            ))}
+          </List>
+
+          <OtherReason>
+            <span style={{ textAlign: "left", fontWeight: 600 }}>Other:</span>
+            <TextBox
+              onChange={(event) => {
+                const value = event.target.value;
+                setFormData({ ...formData, other: value });
+              }}
+              placeholder="Type your reason here..."
+            ></TextBox>
+          </OtherReason>
+          <SubmitButton
+            onClick={async () => {
+              try {
+                await onHandleSubmit(URL, formData.reasons, formData.other);
+                setDidSendForm(true);
+              } catch (error) {
+                console.log(error);
+              }
+            }}
+          >
+            Submit
+          </SubmitButton>
+          <hr
+            style={{
+              backgroundColor: "grey",
+              width: 515,
+              marginLeft: 0,
+              marginTop: 64,
+              marginBottom: 45,
+            }}
+          />
+        </Form>
+        <h4 style={{ textAlign: "left" }}>Selected Post:</h4>
+
+        <PostCard
+          arrayTags={[
+            "Alon",
+            "Ronder",
+            "Tag1",
+            "Tag2",
+            "Tag3",
+            "Tag4",
+            "Tag5",
+            "Tag6",
+            "Tag7",
+            "Tagggggggggg8",
+          ]}
+          platform={"facebook"}
+          date={"31/05/22"}
+          postUrl={"google.com"}
         />
-      </Form>
-      <h4 style={{ textAlign: "left" }}>Selected Post:</h4>
+      </Wrapper>
+    );
 
-      <PostCard
-        arrayTags={[
-          "Alon",
-          "Ronder",
-          "Tag1",
-          "Tag2",
-          "Tag3",
-          "Tag4",
-          "Tag5",
-          "Tag6",
-          "Tag7",
-          "Tagggggggggg8",
-        ]}
-        platform={"facebook"}
-        date={"31/05/22"}
-        postUrl={"google.com"}
-      />
-    </Wrapper>
-  );
+  if (didSendForm) return <div>thanks!!!</div>;
 }
 
 const OtherReason = styled.div`

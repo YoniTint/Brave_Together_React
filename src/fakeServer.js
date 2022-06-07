@@ -33,6 +33,10 @@ createServer({
     });
 
     this.post("/report", (schema, request) => {
+      const URL = request.requestBody.URL;
+      const reasons = request.requestBody.reasons;
+      const other = request.requestBody.other;
+      console.log(request.requestBody);
       return request.requestBody;
     });
   },
