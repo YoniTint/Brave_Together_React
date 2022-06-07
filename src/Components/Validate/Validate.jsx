@@ -4,16 +4,16 @@ import styled from "styled-components";
 import useGetPosts from "../Hooks/useGetPosts";
 export default function Validate() {
   const amountOfPostsToCheck = 124; //Server input
-const posts= useGetPosts();
+  const posts = useGetPosts();
   return (
     <Wrapper>
-         <AmountOfPostsToCheck>
-          {amountOfPostsToCheck} posted are waiting for you to check
-        </AmountOfPostsToCheck>
+      <AmountOfPostsToCheck>
+        {amountOfPostsToCheck} posted are waiting for you to check
+      </AmountOfPostsToCheck>
       <TopContainerStyle>
-        {posts.data?.data.map(post=>{return <ValidateCard key={post.url} postData={post}/>
-
-       })}
+        {posts.data?.data.map((post) => {
+          return <ValidateCard key={post.url} postData={post} />;
+        })}
       </TopContainerStyle>
     </Wrapper>
   );
