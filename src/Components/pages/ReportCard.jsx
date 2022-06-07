@@ -4,6 +4,7 @@ import { Checkbox as MuiCheckbox } from "@mui/material";
 import PostCard from "../Validate/PostCard";
 import axios from "axios";
 import postReport from "../Hooks/postReport";
+import ThankYouWindow from "../Validate/ThankYouWindow";
 
 const options = [
   "Minimizing the holocaust",
@@ -11,6 +12,7 @@ const options = [
   "Jews benifit from the holocaust",
   "Equating Israel to the Nazis",
 ];
+
 const onHandleSubmit = async (URL, reasons, other) => {
   const response = await postReport(URL, reasons, other);
 };
@@ -102,7 +104,12 @@ export default function ReportCard() {
       </Wrapper>
     );
 
-  if (didSendForm) return <div>thanks!!!</div>;
+  if (didSendForm)
+    return (
+      <Wrapper>
+        <ThankYouWindow />
+      </Wrapper>
+    );
 }
 
 const OtherReason = styled.div`
