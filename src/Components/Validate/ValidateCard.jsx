@@ -3,7 +3,11 @@ import Button from "./Button";
 import styled from "styled-components";
 import PostCard from "./PostCard";
 
-export default function ValidateCard({ postData, setIsOffensivePost }) {
+export default function ValidateCard({
+  postData,
+  setIsOffensivePost,
+  setPlatform,
+}) {
   console.log(postData);
   return (
     <Wrapper>
@@ -25,8 +29,20 @@ export default function ValidateCard({ postData, setIsOffensivePost }) {
         postUrl={postData.url}
       />
       <DecisionButton>
-        <Button isOffensive={false} setIsOffensivePost={setIsOffensivePost} />
-        <Button isOffensive={true} setIsOffensivePost={setIsOffensivePost} />
+        <Button
+          isOffensive={false}
+          setIsOffensivePost={setIsOffensivePost}
+          posturl={postData.url}
+          setPlatform={setPlatform}
+          platform={postData.platform}
+        />
+        <Button
+          isOffensive={true}
+          setIsOffensivePost={setIsOffensivePost}
+          posturl={postData.url}
+          setPlatform={setPlatform}
+          platform={postData.platform}
+        />
       </DecisionButton>
       <NotSure>NOT SURE</NotSure>
     </Wrapper>
