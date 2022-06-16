@@ -4,14 +4,14 @@ const fakePost = {
   platform: "facebook",
   date: new Date(),
   message: "jews are so bad... very bad!!!",
-  url: "https://www.google.com",
+  url: "20531316728%2Fposts%2F10154009990506729%2F",
 };
 
 const anotherFakePost = {
   platform: "twitter",
   date: new Date(),
   message: "arrrrrgh, herzel was full of ****",
-  url: "https://www.twitter.com",
+  url: "1537060486440689664",
 };
 
 const posts = [fakePost, anotherFakePost];
