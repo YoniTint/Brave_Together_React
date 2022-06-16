@@ -8,7 +8,7 @@ import arrow from "./media/arrow.svg";
 export default function PostInfo({ platform, date }) {
   const info = `Post from: ${platform} | Posted: ${dateFormat(
     date,
-    "dd-MM-yyyy"
+    "dd MM yyyy"
   )}`;
   var platformImage;
   switch (platform) {
