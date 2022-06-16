@@ -8,14 +8,17 @@ export default function Button({ isOffensive }) {
     <div
       style={
         isOffensive
-          ? { ...buttonStyle, backgroundColor: "rgba(241, 43, 44, 0.2)"}
+          ? { ...buttonStyle, backgroundColor: "rgba(241, 43, 44, 0.2)" }
           : { ...buttonStyle }
-      }>
-
+      }
+    >
       <Icon src={isOffensive ? checkOffensiveButton : checkSafeButton} />
 
-      {isOffensive ? (<span style={offensiveStyle}>Offensive</span>) 
-                    : (<span style={safeStyle}>Safe</span>)}
+      {isOffensive ? (
+        <span style={offensiveStyle}>Offensive</span>
+      ) : (
+        <span style={safeStyle}>Safe</span>
+      )}
     </div>
   );
 }
@@ -53,4 +56,3 @@ const Icon = styled.img`
 `;
 //left: "calc(50% - 10.5px/2 - 0.15px)",
 //top: "calc(50% - 7px/2 - 0.5px)",
-
