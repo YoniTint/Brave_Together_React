@@ -14,10 +14,11 @@ const options = [
 ];
 
 const onHandleSubmit = async (URL, reasons, other) => {
+  console.log(URL);
   const response = await postReport(URL, reasons, other);
 };
-const URL = "google.com";
-export default function ReportCard() {
+
+export default function ReportCard({ arrayTags, date, platform, postUrl }) {
   const [formData, setFormData] = useState({});
   const [didSendForm, setDidSendForm] = useState(false);
 
@@ -63,7 +64,7 @@ export default function ReportCard() {
           <SubmitButton
             onClick={async () => {
               try {
-                await onHandleSubmit(URL, formData.reasons, formData.other);
+                await onHandleSubmit(postUrl, formData.reasons, formData.other);
                 setDidSendForm(true);
               } catch (error) {
                 console.log(error);
@@ -97,9 +98,9 @@ export default function ReportCard() {
             "Tag7",
             "Tagggggggggg8",
           ]}
-          platform={"facebook"}
-          date={"31/05/22"}
-          postUrl={"google.com"}
+          platform={platform}
+          date={date}
+          postUrl={postUrl}
         />
       </Wrapper>
     );

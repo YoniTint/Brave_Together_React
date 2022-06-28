@@ -2,7 +2,7 @@ import React from "react";
 import ValidateCard from "./ValidateCard";
 import styled from "styled-components";
 import useGetPosts from "../Hooks/useGetPosts";
-export default function Validate({ setIsOffensivePost }) {
+export default function Validate({ setIsOffensivePost, setPlatform, setDate }) {
   const amountOfPostsToCheck = 124; //Server input
   const posts = useGetPosts();
   return (
@@ -18,6 +18,7 @@ export default function Validate({ setIsOffensivePost }) {
               postData={post}
               style={ValidateCardStyle}
               setIsOffensivePost={setIsOffensivePost}
+              setPlatform={setPlatform}
             />
           );
         })}
