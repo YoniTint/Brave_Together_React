@@ -60,6 +60,8 @@ export default function ThankYouWindow() {
             marginBottom: 45,
           }}
         />
+
+        <span></span>
       </Wrapper>
     </>
   );
