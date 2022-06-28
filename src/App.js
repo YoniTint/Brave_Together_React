@@ -8,7 +8,7 @@ process.env.NODE_ENV === "development" && require("./fakeServer");
 
 function App() {
   const queryClient = new QueryClient();
-  const [isOffensivePost, setIsOffensivePost] = useState();
+  const [isOffensivePost, setIsOffensivePost] = useState("");
   const [platform, setPlatform] = useState();
 
 
