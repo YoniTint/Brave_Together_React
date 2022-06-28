@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { Checkbox as MuiCheckbox } from "@mui/material";
 import PostCard from "../Validate/PostCard";
 import axios from "axios";
@@ -24,85 +24,91 @@ export default function ReportCard({ arrayTags, date, platform, postUrl }) {
 
   if (didSendForm === false)
     return (
-      <Wrapper>
-        <Header>Report Post:</Header>
+      <BlackBackground>
+        <Wrapper>
+          <Header>Report Post</Header>
 
-        <SubHeader>What defamation did you find here?</SubHeader>
-        <Form>
-          <List>
-            {options.map((option) => (
-              <ListItem key={option}>
-                <MuiCheckbox
-                  name={option}
-                  onChange={(event) => {
-                    const value = event.target.name;
-                    setFormData({
-                      ...formData,
-                      reasons: {
-                        ...formData.reasons,
-                        [event.target.name]: event.target.checked,
-                      },
-                    });
-                  }}
-                  size="medium"
-                />
-                <Label>{option}</Label>
-              </ListItem>
-            ))}
-          </List>
+          <SubHeader>What defamation did you find here?</SubHeader>
+          <Form>
+            <List>
+              {options.map((option) => (
+                <ListItem key={option}>
+                  <MuiCheckbox
+                    name={option}
+                    onChange={(event) => {
+                      const value = event.target.name;
+                      setFormData({
+                        ...formData,
+                        reasons: {
+                          ...formData.reasons,
+                          [event.target.name]: event.target.checked,
+                        },
+                      });
+                    }}
+                    size="medium"
+                  />
+                  <Label>{option}</Label>
+                </ListItem>
+              ))}
+            </List>
 
-          <OtherReason>
-            <span style={{ textAlign: "left", fontWeight: 600 }}>Other:</span>
-            <TextBox
-              onChange={(event) => {
-                const value = event.target.value;
-                setFormData({ ...formData, other: value });
+            <OtherReason>
+              <span style={{ textAlign: "left", fontWeight: 600 }}>Other:</span>
+              <TextBox
+                onChange={(event) => {
+                  const value = event.target.value;
+                  setFormData({ ...formData, other: value });
+                }}
+                placeholder="Type your reason here..."
+              ></TextBox>
+            </OtherReason>
+            <SubmitButton
+              onClick={async () => {
+                try {
+                  await onHandleSubmit(
+                    postUrl,
+                    formData.reasons,
+                    formData.other
+                  );
+                  setDidSendForm(true);
+                } catch (error) {
+                  console.log(error);
+                }
               }}
-              placeholder="Type your reason here..."
-            ></TextBox>
-          </OtherReason>
-          <SubmitButton
-            onClick={async () => {
-              try {
-                await onHandleSubmit(postUrl, formData.reasons, formData.other);
-                setDidSendForm(true);
-              } catch (error) {
-                console.log(error);
-              }
-            }}
-          >
-            Submit
-          </SubmitButton>
-          <hr
-            style={{
-              backgroundColor: "grey",
-              width: 515,
-              marginLeft: 0,
-              marginTop: 64,
-              marginBottom: 45,
-            }}
-          />
-        </Form>
-        <h4 style={{ textAlign: "left" }}>Selected Post:</h4>
+            >
+              Submit
+            </SubmitButton>
+            <hr
+              style={{
+                backgroundColor: "grey",
+                width: 515,
+                marginLeft: 0,
+                marginTop: 64,
+                marginBottom: 64,
+              }}
+            />
+          </Form>
+          <h4 style={{ textAlign: "left" }}>Selected Post:</h4>
 
-        <PostCard
-          arrayTags={[
-            "Alon",
-            "Ronder",
-            "Tag1",
-            "Tag2",
-            "Tag3",
-            "Tag4",
-            "Tag5",
-            "Tag6",
-            "Tag7",
-            "Tagggggggggg8",
-          ]}
-          platform={platform}
-          date={date}
-          postUrl={postUrl}
-        />
-      </Wrapper>
+          <PostCard
+            arrayTags={[
+              "Alon",
+              "Ronder",
+              "Tag1",
+              "Tag2",
+              "Tag3",
+              "Tag4",
+              "Tag5",
+              "Tag6",
+              "Tag7",
+              "Tagggggggggg8",
+            ]}
+            platform={platform}
+            date={date}
+            postUrl={postUrl}
+          />
+        </Wrapper>
+      </BlackBackground>
     );
 
   if (didSendForm)
@@ -112,6 +118,25 @@ export default function ReportCard({ arrayTags, date, platform, postUrl }) {
       </Wrapper>
     );
 }
+
+const fadeIn = keyframes`
+0%{
+  opacity:0
+}
+
+100%{
+  opacity:1
+}
+`;
+const BlackBackground = styled.div`
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+  animation: ${fadeIn} 0.5s;
+`;
 
 const OtherReason = styled.div`
   width: 324px;
@@ -136,23 +161,31 @@ const Form = styled.div`
   flex-direction: column;
 `;
 
+const fadeFromRightkeyframes = keyframes`
+0%{transform:translateX(400px)}
+90%{transform:translateX(-80px)}
+100%{transform:translateX(0px)}
+`;
+
 const Wrapper = styled.div`
+  animation: ${fadeFromRightkeyframes} 0.5s;
   display: flex;
+  z-index: 2; /* Sit on top */
   position: fixed;
   right: 0;
-  justify-content: center;
+  overflow-y: auto;
+  justify-content: top;
   flex-direction: column;
-  flex-wrap: wrap;
   background: white;
   width: 515px;
-  height: 133vh;
+  height: 100vh;
   padding-left: 50px;
   padding-right: 50px;
   border-radius: 20px;
 `;
 const Header = styled.h3`
   text-align: left;
-  margin-top: 65px;
+  margin-top: 64px;
 `;
 const SubHeader = styled.h4`
   text-align: left;
@@ -160,8 +193,7 @@ const SubHeader = styled.h4`
 
 const ListItem = styled.div`
   display: flex;
-  margin-bottom: 24px;
-  padding: 0px;
+  margin-bottom: 25px;
 `;
 const TextBox = styled.textarea`
   resize: none;

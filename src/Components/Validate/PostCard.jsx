@@ -45,8 +45,6 @@ const Temp = styled.div`
   margin-top: 50px;
   border-radius: 10px;
   background-color: white;
-  border-style: solid;
-  border-color: black;
   margin-bottom: 24px;
   overflow: auto;
 `;
