@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import checkSafeButton from "./media/IconApprove.svg";
 import checkOffensiveButton from "./media/IconOffensive.svg";
 import styled from "styled-components";
 
-export default function Button({ isOffensive }) {
+export default function Button({
+  isOffensive,
+  setIsOffensivePost,
+  posturl,
+  setPlatform,
+  platform,
+}) {
   return (
     <div
       style={
@@ -15,9 +21,24 @@ export default function Button({ isOffensive }) {
       <Icon src={isOffensive ? checkOffensiveButton : checkSafeButton} />
 
       {isOffensive ? (
-        <span style={offensiveStyle}>Offensive</span>
+        <span
+          onClick={() => {
+            setIsOffensivePost(posturl);
+            setPlatform(platform);
+          }}
+          style={offensiveStyle}
+        >
+          Offensive
+        </span>
       ) : (
-        <span style={safeStyle}>Safe</span>
+        <span
+          onClick={() => {
+            setIsOffensivePost();
+          }}
+          style={safeStyle}
+        >
+          Safe
+        </span>
       )}
     </div>
   );

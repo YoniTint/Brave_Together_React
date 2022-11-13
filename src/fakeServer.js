@@ -4,16 +4,14 @@ const fakePost1 = {
   platform: "facebook",
   date: new Date(),
   message: "jews are so bad... very bad!!!",
-  url: "https://www.google.com",
-  arrayTags: ["tag1", "tag2", "tag3", "LONG tag4", "tag5", "LONGERERERER tag6", "tag77", "tag8", "tag1", "tag2", "tag3", "LONG tag4", "tag5", "LONGERERERER tag6", "tag77", "tag8"],
+  url: "20531316728%2Fposts%2F10154009990506729%2F",
 };
 
 const fakePost2 = {
   platform: "twitter",
   date: new Date(),
   message: "arrrrrgh, herzel was full of ****",
-  url: "https://www.twitter.com",
-  arrayTags: [],
+  url: "1537060486440689664",
 };
 
 const fakePost3 = {
@@ -48,7 +46,14 @@ const fakePost6 = {
   arrayTags: ["tag1", "tag2", "tag3", "tag4", "tag5", "tag6", "tag77", "tag8"],
 };
 
-const posts = [fakePost1, fakePost2, fakePost3, fakePost4, fakePost5, fakePost6];
+const posts = [
+  fakePost1,
+  fakePost2,
+  fakePost3,
+  fakePost4,
+  fakePost5,
+  fakePost6,
+];
 
 createServer({
   routes() {
@@ -64,6 +69,14 @@ createServer({
 
     this.get("/falfel", ({ db }) => {
       return "this is a falafel";
+    });
+
+    this.post("/report", (schema, request) => {
+      const URL = request.requestBody.URL;
+      const reasons = request.requestBody.reasons;
+      const other = request.requestBody.other;
+      console.log(request.requestBody);
+      return request.requestBody;
     });
   },
 });

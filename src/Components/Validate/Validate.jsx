@@ -2,17 +2,25 @@ import React from "react";
 import ValidateCard from "./ValidateCard";
 import styled from "styled-components";
 import useGetPosts from "../Hooks/useGetPosts";
-export default function Validate() {
+export default function Validate({ setIsOffensivePost, setPlatform, setDate }) {
   const amountOfPostsToCheck = 124; //Server input
   const posts = useGetPosts();
   return (
     <Wrapper>
-      <AmountOfPostsToCheck>
+      <ReportCard>
         {amountOfPostsToCheck} posted are waiting for you to check
-      </AmountOfPostsToCheck>
+      </ReportCard>
       <TopContainerStyle>
         {posts.data?.data.map((post) => {
-          return <ValidateCard key={post.url} postData={post} />;
+          return (
+            <ValidateCard
+              key={post.url}
+              postData={post}
+              style={ValidateCardStyle}
+              setIsOffensivePost={setIsOffensivePost}
+              setPlatform={setPlatform}
+            />
+          );
         })}
       </TopContainerStyle>
     </Wrapper>
@@ -38,6 +46,13 @@ const AmountOfPostsToCheck = styled.div`
   line-height: 22px;
   color: #091430;
 `;
+const ValidateCardStyle = {
+  height: 588,
+  width: 451,
+  padding: 24,
+  marginTop: 68,
+  marginLeft: 45,
+};
 
 const TopContainerStyle = styled.div`
   display: flex;
