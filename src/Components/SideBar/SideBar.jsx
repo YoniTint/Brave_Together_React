@@ -6,7 +6,7 @@ import FAQ from "./media/FAQ.svg";
 import { NavButton } from "./NavButton";
 
 const buttons = [
-  { name: "Feed", src: feed, URL: "/feed" },
+  { name: "Feed", src: feed, URL: "/" },
   { name: "My Actions", src: myActions, URL: "/actions" },
   { name: "FAQ", src: FAQ, URL: "/FAQ" },
 ];
