@@ -1,15 +1,14 @@
 import React from "react";
 import ValidateCard from "./ValidateCard";
 import styled from "styled-components";
+import ReportCard from "../pages/ReportCard";
 import useGetPosts from "../Hooks/useGetPosts";
+
 export default function Validate({ setIsOffensivePost, setPlatform, setDate }) {
   const amountOfPostsToCheck = 124; //Server input
   const posts = useGetPosts();
   return (
     <Wrapper>
-      <ReportCard>
-        {amountOfPostsToCheck} posted are waiting for you to check
-      </ReportCard>
       <TopContainerStyle>
         {posts.data?.data.map((post) => {
           return (
