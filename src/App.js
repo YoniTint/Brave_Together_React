@@ -17,28 +17,24 @@ function App() {
   return (
     <BrowserRouter>
         <QueryClientProvider client={queryClient}>
-          <div style={mainPageStyle}>
-            <div style={{ display: "flex", height: "100vh", width: "100vw" }}>
+          <MainPageStyle>
               <SideBar />
               <Routes>
                 <Route path="/" element={ <Validate setIsOffensivePost={setIsOffensivePost} setPlatform={setPlatform} /> } />
                 <Route path="FAQ" element={<FAQ />} />
               </Routes>
                 { isOffensivePost && <ReportCard postUrl={isOffensivePost} platform={platform} /> }
-            </div>
-          </div>
+          </MainPageStyle>
         </QueryClientProvider>
     </BrowserRouter>
   );
 }
-
-const MainPage = styled.div`
-  background-color: #e5e5e5;
+const MainPageStyle = styled.div`
+  display: flex;
+  background-color: rgb(229, 229, 229);
+  text-align: center;
+  height: 100%;
+  width: 100%;
 `;
-
-const mainPageStyle = {
-    backgroundColor: "rgb(229, 229, 229)",
-    textAlign: "center",
-};
-
 export default App;
+//<div style={{ display: "flex", height: "100%", width: "100vw" }}>

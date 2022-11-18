@@ -1,18 +1,19 @@
 import React from "react";
 import Badge from "./Badge";
 import feed from "./media/feed.png";
-import myActions from "./media/myActions.png";
-import FAQ from "./media/FAQ.svg";
+import myActions from "./media/myActionsLogo.svg";
+import FAQ from "./media/faqLogo.svg";
 import { NavButton } from "./NavButton";
+import styled from "styled-components";
 
 const buttons = [
   { name: "Feed", src: feed, URL: "/" },
-  { name: "My Actions", src: myActions, URL: "/actions" },
+  { name: "My Actions", src: myActions, URL: "/actions"},
   { name: "FAQ", src: FAQ, URL: "/FAQ" },
 ];
 export default function SideBar() {
   return (
-    <div style={sideBarStyle}>
+    <SideBarStyle>
       <div style={partisanStyle}>PARTISANS</div>
       <Badge />
       <hr style={lineStyle} />
@@ -27,7 +28,7 @@ export default function SideBar() {
           return <NavButton button={button} />;
         })}
       </div>
-    </div>
+    </SideBarStyle>
   );
 }
 
@@ -43,9 +44,10 @@ const partisanStyle = {
   alignItems: "center",
   textTransform: "uppercase",
 };
-const sideBarStyle = {
-  backgroundColor: "white",
-  width: 300,
-  borderBottomRightRadius: 22,
-  borderTopRightRadius: 22,
-};
+
+const SideBarStyle = styled.div`
+background: white;
+width: 300;
+borderBottomRightRadius: 22;
+borderTopRightRadius: 22;
+`;

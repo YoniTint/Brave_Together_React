@@ -30,16 +30,19 @@ export function NavButton(props) {
         navigate(button.URL);
       }}
     >
-      <img src={button.src} style={imgStyle} />
+      <img src={button.src} style={imgStyle}/>
       {button.name}
     </button>
   );
+  
 }
 
-export const imgStyle = {
+
+const imgStyle = {
   marginRight: 16,
   marginLeft: 24,
   width: 16,
   position: "relative",
   top: 4,
 };
+

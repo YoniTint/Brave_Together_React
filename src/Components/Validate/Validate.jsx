@@ -27,9 +27,10 @@ export default function Validate({ setIsOffensivePost, setPlatform, setDate }) {
 }
 
 const Wrapper = styled.div`
-  background-color: "#E5E5E5";
-  color: "black";
+  background-color: #E5E5E5;
+  color: black;
   width: "calc(100% - 300px)";
+  overflow: auto;
 `;
 
 const AmountOfPostsToCheck = styled.div`
