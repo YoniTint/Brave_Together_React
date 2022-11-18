@@ -88,11 +88,11 @@ function dateFormat(inputDate, format) {
 
   //extract the parts of the date
   const day = date.getDate();
-  const month = date.getMonth() + 1;
+  const month = getMonthName(date.getMonth()).slice(0,3);
   const year = date.getFullYear();
 
   //replace the month
-  format = format.replace("MM", month.toString().padStart(2, "0"));
+  format = format.replace("MM", month.padStart(2, "0"));
 
   //replace the year
   if (format.indexOf("yyyy") > -1) {
@@ -104,4 +104,10 @@ function dateFormat(inputDate, format) {
   format = format.replace("dd", day.toString().padStart(2, "0"));
 
   return format;
+}
+function getMonthName(monthNumber) {
+  const date = new Date();
+  date.setMonth(monthNumber);
+
+  return date.toLocaleString([], { month: 'long' });
 }
