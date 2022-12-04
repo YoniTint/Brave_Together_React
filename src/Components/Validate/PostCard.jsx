@@ -12,7 +12,7 @@ export default function PostCard({ arrayTags, platform, date, postUrl }) {
       <Temp>
         {platform === "facebook" && (
           <iframe
-            src={`https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2F${postUrl}&width=441&show_text=true&height=336&appId`}
+            src={postUrl}
             width="441"
             height="336"
             scrolling="no"

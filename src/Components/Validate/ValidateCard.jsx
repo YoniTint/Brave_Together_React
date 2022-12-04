@@ -12,20 +12,9 @@ export default function ValidateCard({
   return (
     <Wrapper>
       <PostCard
-        arrayTags={[
-          "Alon",
-          "Ronder",
-          "Tag1",
-          "Tag2",
-          "Tag3",
-          "Tag4",
-          "Tag5",
-          "Tag6",
-          "Tag7",
-          "Tagggggggggg8",
-        ]}
+        arrayTags={postData.tags}
         platform={postData.platform}
-        date={postData.date}
+        date={postData.datePosted}
         postUrl={postData.url}
       />
       <DecisionButton>

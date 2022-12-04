@@ -7,8 +7,6 @@ import ReportCard from "./Components/pages/ReportCard";
 import Validate from "./Components/Validate/Validate";
 import FAQ from "./Components/FAQ";
 
-process.env.NODE_ENV === "development" && require("./fakeServer");
-
 function App() {
   const queryClient = new QueryClient();
   const [isOffensivePost, setIsOffensivePost] = useState(null);

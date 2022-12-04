@@ -6,7 +6,7 @@ export default function ListTags({ arrayTags }) {
     return (
     <ListOfTags>
         {arrayTags.map((tag) => {
-          return(<Tags key={tag}> {tag} </Tags>)})}
+          return(<Tags key={tag.id}> {tag.tag} </Tags>)})}
     {arrayTags.length > 0 ? <InfoIcon src={InformationIcon}/> : ""}
     </ListOfTags>
     

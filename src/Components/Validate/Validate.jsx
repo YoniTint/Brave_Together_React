@@ -7,14 +7,15 @@ import useGetPosts from "../Hooks/useGetPosts";
 export default function Validate({ setIsOffensivePost, setPlatform, setDate }) {
   const amountOfPostsToCheck = 124; //Server input
   const posts = useGetPosts();
+  console.log(posts);
   return (
     <Wrapper>
       <TopContainerStyle>
-        {posts.data?.data.map((post) => {
+        {posts.data?.data.data.map((post) => {
           return (
             <ValidateCard
-              key={post.url}
-              postData={post}
+              key={post.attributes.url}
+              postData={post.attributes}
               style={ValidateCardStyle}
               setIsOffensivePost={setIsOffensivePost}
               setPlatform={setPlatform}
