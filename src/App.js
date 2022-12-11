@@ -8,12 +8,9 @@ import Validate from "./Components/Validate/Validate";
 import FAQ from "./Components/FAQ";
 import ActionMenu from "./Components/MyActions/ActionMenu"
 
-process.env.NODE_ENV === "development" && require("./fakeServer");
-
 function App() {
   const queryClient = new QueryClient();
-  const [isOffensivePost, setIsOffensivePost] = useState(null);
-  const [platform, setPlatform] = useState();
+  const [offensivePost, setOffensivePost] = useState(null);
 
   return (
     <BrowserRouter>
@@ -21,11 +18,11 @@ function App() {
           <MainPageStyle>
               <SideBar />
               <Routes>
-                <Route path="/" element={ <Validate setIsOffensivePost={setIsOffensivePost} setPlatform={setPlatform} /> } />
-                <Route path="/FAQ" element={<FAQ />} />
+                <Route path="/" element={ <Validate setOffensivePost={setOffensivePost} /> } />
+                <Route path="FAQ" element={<FAQ />} />
                 <Route path="/actions" element={<ActionMenu />} />
               </Routes>
-                { isOffensivePost && <ReportCard postUrl={isOffensivePost} platform={platform} /> }
+                { offensivePost && <ReportCard post={offensivePost} /> }
           </MainPageStyle>
         </QueryClientProvider>
     </BrowserRouter>

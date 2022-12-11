@@ -14,9 +14,9 @@ export default function ActionMenu({  }) {
     <Wrapper>
       <TitleStyle>{pageTitle}</TitleStyle>
       <MenuStyle>
-      {menuOptions.map((menuOptions) => {
+      {/* {menuOptions.map((menuOptions) => {
           return <NavButton button={menuOptions} />;
-        })}
+        })} */}
 
       </MenuStyle>
       

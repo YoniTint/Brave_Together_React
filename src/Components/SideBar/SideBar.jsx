@@ -25,7 +25,7 @@ export default function SideBar() {
         }}
       >
         {buttons.map((button) => {
-          return <NavButton button={button} />;
+          return <NavButton button={button} key={button.name} />;
         })}
       </div>
     </SideBarStyle>

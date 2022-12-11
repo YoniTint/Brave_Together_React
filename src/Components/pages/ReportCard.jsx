@@ -13,12 +13,11 @@ const options = [
   "Equating Israel to the Nazis",
 ];
 
-const onHandleSubmit = async (URL, reasons, other) => {
-  console.log(URL);
-  const response = await postReport(URL, reasons, other);
+const onHandleSubmit = async (post, reasons, other) => {
+  const response = await postReport(post, reasons, other);
 };
 
-export default function ReportCard({ arrayTags, date, platform, postUrl }) {
+export default function ReportCard({ post }) {
   const [formData, setFormData] = useState({});
   const [didSendForm, setDidSendForm] = useState(false);
 
@@ -66,7 +65,7 @@ export default function ReportCard({ arrayTags, date, platform, postUrl }) {
               onClick={async () => {
                 try {
                   await onHandleSubmit(
-                    postUrl,
+                    post,
                     formData.reasons,
                     formData.other
                   );
@@ -91,21 +90,7 @@ export default function ReportCard({ arrayTags, date, platform, postUrl }) {
           <h4 style={{ textAlign: "left" }}>Selected Post:</h4>
 
           <PostCard
-            arrayTags={[
-              "Alon",
-              "Ronder",
-              "Tag1",
-              "Tag2",
-              "Tag3",
-              "Tag4",
-              "Tag5",
-              "Tag6",
-              "Tag7",
-              "Tagggggggggg8",
-            ]}
-            platform={platform}
-            date={date}
-            postUrl={postUrl}
+              postData={post.attributes}
           />
         </Wrapper>
       </BlackBackground>

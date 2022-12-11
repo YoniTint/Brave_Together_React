@@ -5,43 +5,23 @@ import PostCard from "./PostCard";
 
 export default function ValidateCard({
   postData,
-  setIsOffensivePost,
-  setPlatform,
+  setOffensivePost
 }) {
-  console.log(postData);
   return (
     <Wrapper>
       <PostCard
-        arrayTags={[
-          "Alon",
-          "Ronder",
-          "Tag1",
-          "Tag2",
-          "Tag3",
-          "Tag4",
-          "Tag5",
-          "Tag6",
-          "Tag7",
-          "Tagggggggggg8",
-        ]}
-        platform={postData.platform}
-        date={postData.date}
-        postUrl={postData.url}
+        postData={postData.attributes}
       />
       <DecisionButton>
         <Button
           isOffensive={false}
-          setIsOffensivePost={setIsOffensivePost}
-          posturl={postData.url}
-          setPlatform={setPlatform}
-          platform={postData.platform}
+          setOffensivePost={setOffensivePost}
+          postData={postData}
         />
         <Button
           isOffensive={true}
-          setIsOffensivePost={setIsOffensivePost}
-          posturl={postData.url}
-          setPlatform={setPlatform}
-          platform={postData.platform}
+          setOffensivePost={setOffensivePost}
+          postData={postData}
         />
       </DecisionButton>
       <NotSure>NOT SURE</NotSure>

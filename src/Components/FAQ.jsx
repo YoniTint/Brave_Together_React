@@ -10,5 +10,4 @@ export default function FAQ() {
   );
 }
 const MainPageStyle = styled.div`
-
 `;
