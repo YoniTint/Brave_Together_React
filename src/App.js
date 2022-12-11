@@ -6,6 +6,7 @@ import SideBar from "./Components/SideBar/SideBar";
 import ReportCard from "./Components/pages/ReportCard";
 import Validate from "./Components/Validate/Validate";
 import FAQ from "./Components/FAQ";
+import ActionMenu from "./Components/MyActions/ActionMenu"
 
 process.env.NODE_ENV === "development" && require("./fakeServer");
 
@@ -21,7 +22,8 @@ function App() {
               <SideBar />
               <Routes>
                 <Route path="/" element={ <Validate setIsOffensivePost={setIsOffensivePost} setPlatform={setPlatform} /> } />
-                <Route path="FAQ" element={<FAQ />} />
+                <Route path="/FAQ" element={<FAQ />} />
+                <Route path="/actions" element={<ActionMenu />} />
               </Routes>
                 { isOffensivePost && <ReportCard postUrl={isOffensivePost} platform={platform} /> }
           </MainPageStyle>
