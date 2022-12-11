@@ -32,7 +32,7 @@ const MainPageStyle = styled.div`
   display: flex;
   background-color: rgb(229, 229, 229);
   text-align: center;
-  height: 100%;
+  height: 100vh;
   width: 100%;
 `;
 export default App;

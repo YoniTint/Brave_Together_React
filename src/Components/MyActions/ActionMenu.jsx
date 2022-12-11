@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { ActionMenuButton } from "./ActionMenuButton";
 
 
-const menuOptions = [
+const menuButtons = [
   { name: "Not Sure"},
   { name: "Offensive"},
   { name: "Safe"},
@@ -14,9 +15,9 @@ export default function ActionMenu({  }) {
     <Wrapper>
       <TitleStyle>{pageTitle}</TitleStyle>
       <MenuStyle>
-      {/* {menuOptions.map((menuOptions) => {
-          return <NavButton button={menuOptions} />;
-        })} */}
+      {menuButtons.map((menuButton) => {
+          return <ActionMenuButton menuButton={menuButton} key={menuButton.name}/>;
+        })}
 
       </MenuStyle>
       
@@ -50,7 +51,6 @@ width: 1054px;
 height: 40px;
 left: 305px;
 top: 128px;
-`
-const ButtonMenuStyle = styled.div`
-
+display: flex;
+justify-content: space-between;
 `
