@@ -5,10 +5,8 @@ import styled from "styled-components";
 
 export default function Button({
   isOffensive,
-  setIsOffensivePost,
-  posturl,
-  setPlatform,
-  platform,
+  setOffensivePost,
+    postData
 }) {
   return (
     <div
@@ -23,8 +21,7 @@ export default function Button({
       {isOffensive ? (
         <span
           onClick={() => {
-            setIsOffensivePost(posturl);
-            setPlatform(platform);
+            setOffensivePost(postData);
           }}
           style={offensiveStyle}
         >
@@ -33,7 +30,7 @@ export default function Button({
       ) : (
         <span
           onClick={() => {
-            setIsOffensivePost();
+            setOffensivePost();
           }}
           style={safeStyle}
         >

@@ -4,26 +4,30 @@ import PostInfo from "./PostInfo";
 import ListTags from "./ListTags";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 
-export default function PostCard({ arrayTags, platform, date, postUrl }) {
+export default function PostCard({ postData }) {
+
+    if (!postData) {
+        return <div></div>
+    }
   return (
     <Wrapper>
-      <PostInfo platform={platform} date={date} />
+      <PostInfo platform={postData.platform} date={postData.datePosted} />
 
       <Temp>
-        {platform === "facebook" && (
+        {postData.platform === "facebook" && (
           <iframe
-            src={postUrl}
+            src={postData.url}
             width="441"
             height="336"
             scrolling="no"
-            frameborder="0"
-            allowfullscreen="true"
+            frameBorder="0"
+            allowFullScreen={true}
             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
           ></iframe>
         )}
-        {platform === "twitter" && <TwitterTweetEmbed tweetId={postUrl} />}
+        {postData.platform === "twitter" && <TwitterTweetEmbed tweetId={postData.url} />}
       </Temp>
-      <ListTags arrayTags={arrayTags} />
+      <ListTags arrayTags={postData.tags} />
       <LinkToOriginalPostStyle>See Original Post</LinkToOriginalPostStyle>
     </Wrapper>
   );
