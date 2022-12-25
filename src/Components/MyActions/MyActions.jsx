@@ -1,22 +1,24 @@
 import React from "react";
 import styled from "styled-components";
+import { useState } from "react";
 import { ActionMenuButton } from "./ActionMenuButton";
-
+import { Constants } from "../../Constants";
 
 const menuButtons = [
-  { name: "Not Sure"},
-  { name: "Offensive"},
-  { name: "Safe"},
-  { name: "Starred"},
+  { name: Constants.NOT_SURE_ACTION_TITLE, color:"#2C63FD"},
+  { name: Constants.OFFENSIVE_ACTION_TITLE, color:"#F12B2C"},
+  { name: Constants.SAFE_ACTION_TITLE, color:"#29CC97"},
+  { name: Constants.STARRED_ACTION_TITLE, color:"#ffe135"},
 ];
-export default function ActionMenu({  }) {
+export default function MyActions({  }) {
+  const [currentAction, setCurrentState] = useState("Not Sure");
   const pageTitle = "Post activities";
   return (
     <Wrapper>
       <TitleStyle>{pageTitle}</TitleStyle>
       <MenuStyle>
       {menuButtons.map((menuButton) => {
-          return <ActionMenuButton menuButton={menuButton} key={menuButton.name}/>;
+          return <ActionMenuButton menuButton={menuButton} setCurrentAction={setCurrentState} currentAction={currentAction} key={menuButton.name}/>;
         })}
 
       </MenuStyle>
@@ -32,11 +34,10 @@ const Wrapper = styled.div`
 `;
 
 const TitleStyle = styled.div`
-position: absolute;
 width: 200px;
 height: 29px;
-left: 305px;
-top: 59px;
+margin-top:59px;
+margin-left:53px;
 font-family: 'Inter';
 font-weight: 700;
 font-size: 24px;
@@ -46,11 +47,12 @@ align-items: center;
 color: #091430;
 `
 const MenuStyle = styled.div`
-position: absolute;
 width: 1054px;
+margin-top: 40px;
+margin-left: 53px;
 height: 40px;
-left: 305px;
-top: 128px;
 display: flex;
 justify-content: space-between;
+border-bottom: 
 `
+

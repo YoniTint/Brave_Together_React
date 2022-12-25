@@ -35,7 +35,7 @@ export default function SideBar() {
 const lineStyle = { width: 210, marginTop: 30, opacity: 0.4 };
 
 const partisanStyle = {
-  marginTop: 33,
+  marginTop: 55,
   marginLeft: 45,
   fontFamily: "Open Sans",
   fontWeight: 800,

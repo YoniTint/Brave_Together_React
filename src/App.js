@@ -6,7 +6,7 @@ import SideBar from "./Components/SideBar/SideBar";
 import ReportCard from "./Components/pages/ReportCard";
 import Validate from "./Components/Validate/Validate";
 import FAQ from "./Components/FAQ";
-import ActionMenu from "./Components/MyActions/ActionMenu"
+import MyActions from "./Components/MyActions/MyActions"
 
 function App() {
   const queryClient = new QueryClient();
@@ -20,7 +20,7 @@ function App() {
               <Routes>
                 <Route path="/" element={ <Validate setOffensivePost={setOffensivePost} /> } />
                 <Route path="FAQ" element={<FAQ />} />
-                <Route path="/actions" element={<ActionMenu />} />
+                <Route path="/actions" element={<MyActions />} />
               </Routes>
                 { offensivePost && <ReportCard post={offensivePost} /> }
           </MainPageStyle>
