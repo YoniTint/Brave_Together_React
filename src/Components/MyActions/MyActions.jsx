@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { useState } from "react";
 import { ActionMenuButton } from "./ActionMenuButton";
 import { Constants } from "../../Constants";
+import MyActionPost from"./MyActionPost";
 
 const menuButtons = [
   { name: Constants.NOT_SURE_ACTION_TITLE, color:"#2C63FD"},
@@ -22,6 +23,7 @@ export default function MyActions({  }) {
         })}
 
       </MenuStyle>
+      <MyActionPost ActionTypeOfPosts={currentAction}></MyActionPost>
       
     </Wrapper>
   );
