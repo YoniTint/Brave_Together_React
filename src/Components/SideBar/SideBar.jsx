@@ -8,25 +8,27 @@ import styled from "styled-components";
 
 const buttons = [
   { name: "Feed", src: feed, URL: "/" },
-  { name: "My Actions", src: myActions, URL: "/actions"},
+  { name: "My Actions", src: myActions, URL: "/actions" },
   { name: "FAQ", src: FAQ, URL: "/FAQ" },
 ];
 export default function SideBar() {
   return (
     <SideBarStyle>
-      <div style={partisanStyle}>PARTISANS</div>
-      <Badge />
-      <hr style={lineStyle} />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "stretch",
-        }}
-      >
-        {buttons.map((button) => {
-          return <NavButton button={button} key={button.name} />;
-        })}
+      <div style={{ position: "sticky", top: 33 }}>
+        <div style={partisanStyle}>PARTISANS</div>
+        <Badge />
+        <hr style={lineStyle} />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "stretch",
+          }}
+        >
+          {buttons.map((button) => {
+            return <NavButton button={button} key={button.name} />;
+          })}
+        </div>
       </div>
     </SideBarStyle>
   );
@@ -46,8 +48,10 @@ const partisanStyle = {
 };
 
 const SideBarStyle = styled.div`
-background: white;
-width: 300;
-borderBottomRightRadius: 22;
-borderTopRightRadius: 22;
+  background: white;
+  width: 300;
+  borderbottomrightradius: 22;
+  bordertoprightradius: 22;
+  /* position: sticky;
+  top: 0; */
 `;
