@@ -13,13 +13,14 @@ const options = [
   "Equating Israel to the Nazis",
 ];
 
-const onHandleSubmit = async (post, reasons, other) => {
-  const response = await postReport(post, reasons, other);
+const onHandleSubmit = async (post, reasons, other, userId) => {
+  const response = await postReport(post, reasons, other, userId);
 };
 
-export default function ReportCard({ post }) {
+export default function ReportCard({ post, userId }) {
   const [formData, setFormData] = useState({});
   const [didSendForm, setDidSendForm] = useState(false);
+  console.log({userId});
 
   if (didSendForm === false)
     return (
@@ -67,7 +68,8 @@ export default function ReportCard({ post }) {
                   await onHandleSubmit(
                     post,
                     formData.reasons,
-                    formData.other
+                    formData.other,
+                      userId
                   );
                   setDidSendForm(true);
                 } catch (error) {

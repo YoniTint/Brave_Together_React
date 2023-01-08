@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ActionMenuButton } from "./ActionMenuButton";
 import { Constants } from "../../Constants";
 import MyActionPost from"./MyActionPost";
+import useGetDecisions from "../Hooks/useGetDecisions";
 
 const menuButtons = [
   { name: Constants.NOT_SURE_ACTION_TITLE, color:"#2C63FD"},
@@ -11,7 +12,7 @@ const menuButtons = [
   { name: Constants.SAFE_ACTION_TITLE, color:"#29CC97"},
   { name: Constants.STARRED_ACTION_TITLE, color:"#ffe135"},
 ];
-export default function MyActions({  }) {
+export default function MyActions({ userId }) {
   const [currentAction, setCurrentState] = useState("Not Sure");
   const pageTitle = "Post activities";
   return (
@@ -23,7 +24,7 @@ export default function MyActions({  }) {
         })}
 
       </MenuStyle>
-      <MyActionPost ActionTypeOfPosts={currentAction}></MyActionPost>
+      <MyActionPost ActionTypeOfPosts={currentAction} userId={userId}></MyActionPost>
       
     </Wrapper>
   );

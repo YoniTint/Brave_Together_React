@@ -5,9 +5,9 @@ import InformationIcon from "./media/IconInformationTags.svg";
 export default function ListTags({ arrayTags }) {
     return (
     <ListOfTags>
-        {arrayTags.map((tag) => {
+        {arrayTags?.map((tag) => {
           return(<Tags key={tag.id}> {tag.tag} </Tags>)})}
-    {arrayTags.length > 0 ? <InfoIcon src={InformationIcon}/> : ""}
+    {arrayTags?.length > 0 ? <InfoIcon src={InformationIcon}/> : ""}
     </ListOfTags>
     
     );
