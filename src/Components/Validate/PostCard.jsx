@@ -5,10 +5,9 @@ import ListTags from "./ListTags";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 
 export default function PostCard({ postData }) {
-
-    if (!postData) {
-        return <div></div>
-    }
+  if (!postData) {
+    return <div></div>;
+  }
   return (
     <Wrapper>
       <PostInfo platform={postData.platform} date={postData.datePosted} />
@@ -25,10 +24,36 @@ export default function PostCard({ postData }) {
             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
           ></iframe>
         )}
-        {postData.platform === "twitter" && <TwitterTweetEmbed tweetId={postData.url} />}
+        {postData.platform === "twitter" && (
+          <TwitterTweetEmbed tweetId={postData.url} />
+        )}
       </Temp>
       <ListTags arrayTags={postData.tags} />
-      <LinkToOriginalPostStyle>See Original Post</LinkToOriginalPostStyle>
+      <LinkToOriginalPostStyle
+        onClick={() => {
+          if (postData.platform === "twitter") {
+            window.open(
+              `https://twitter.com/twitter/status/${postData.url}`,
+              "_blank"
+            );
+          } else if (postData.platform === "facebook") {
+            let pluginUrl =
+              "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fenglishfootballil%2Fposts%2Fpfbid02i7Z39wYt8vjWStbbHVTjGK2Sh2pfFS2EqTE6kh71bCW46rjdX2nW9M9o8Gso2M6vl";
+
+            // Split the URL by "href="
+            let splitUrl = pluginUrl.split("href=");
+
+            // The actual post URL is the second item in the resulting array
+            let postUrl = splitUrl[1];
+
+            const decodedUrl = decodeURIComponent(postUrl);
+
+            window.open(decodedUrl, "_blank");
+          }
+        }}
+      >
+        See Original Post
+      </LinkToOriginalPostStyle>
     </Wrapper>
   );
 }
@@ -68,4 +93,5 @@ const LinkToOriginalPostStyle = styled.div`
   color: #2c63fd;
   margin-top: 24px;
   margin-left: calc(451px / 2 - (180px / 2));
+  cursor: pointer;
 `;
