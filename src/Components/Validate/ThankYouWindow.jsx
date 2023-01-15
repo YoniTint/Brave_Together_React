@@ -2,8 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import thanks from "./media/thanks.svg";
 import reasonsCheckbox from "./media/reasons_checkbox.svg";
+import reportIcon from "./media/reportIcon.svg";
 
-export default function ThankYouWindow() {
+export default function ThankYouWindow({ post }) {
   const thankNote =
     "Your report has been recieved" +
     "\n" +
@@ -61,7 +62,42 @@ export default function ThankYouWindow() {
           }}
         />
 
-        <span></span>
+        <span>Want to do the extra mile?</span>
+        <div style={{ marginTop: 25 }}>
+          <img src={reportIcon} />
+
+          <span
+            style={{
+              fontSize: 18,
+              marginLeft: 7,
+              color: "#2C63FD",
+              textDecoration: "underline",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              if (post.platform === "twitter") {
+                window.open(
+                  `https://twitter.com/twitter/status/${post.url}`,
+                  "_blank"
+                );
+              } else if (post.platform === "facebook") {
+                let pluginUrl = post.url;
+
+                // Split the URL by "href="
+                let splitUrl = pluginUrl.split("href=");
+
+                // The actual post URL is the second item in the resulting array
+                let postUrl = splitUrl[1];
+
+                const decodedUrl = decodeURIComponent(postUrl);
+
+                window.open(decodedUrl, "_blank");
+              }
+            }}
+          >
+            Create report on the relevant platform
+          </span>
+        </div>
       </Wrapper>
     </>
   );

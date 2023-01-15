@@ -37,8 +37,7 @@ export default function PostCard({ postData }) {
               "_blank"
             );
           } else if (postData.platform === "facebook") {
-            let pluginUrl =
-              "https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fenglishfootballil%2Fposts%2Fpfbid02i7Z39wYt8vjWStbbHVTjGK2Sh2pfFS2EqTE6kh71bCW46rjdX2nW9M9o8Gso2M6vl";
+            let pluginUrl = postData.url;
 
             // Split the URL by "href="
             let splitUrl = pluginUrl.split("href=");

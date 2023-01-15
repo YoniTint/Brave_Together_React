@@ -20,7 +20,7 @@ const onHandleSubmit = async (post, reasons, other, userId) => {
 export default function ReportCard({ post, userId }) {
   const [formData, setFormData] = useState({});
   const [didSendForm, setDidSendForm] = useState(false);
-  console.log({userId});
+  console.log({ userId });
 
   if (didSendForm === false)
     return (
@@ -69,7 +69,7 @@ export default function ReportCard({ post, userId }) {
                     post,
                     formData.reasons,
                     formData.other,
-                      userId
+                    userId
                   );
                   setDidSendForm(true);
                 } catch (error) {
@@ -91,9 +91,7 @@ export default function ReportCard({ post, userId }) {
           </Form>
           <h4 style={{ textAlign: "left" }}>Selected Post:</h4>
 
-          <PostCard
-              postData={post.attributes}
-          />
+          <PostCard postData={post.attributes} />
         </Wrapper>
       </BlackBackground>
     );
@@ -101,7 +99,7 @@ export default function ReportCard({ post, userId }) {
   if (didSendForm)
     return (
       <Wrapper>
-        <ThankYouWindow />
+        <ThankYouWindow post={post.attributes} />
       </Wrapper>
     );
 }
@@ -211,4 +209,5 @@ const SubmitButton = styled.button`
   font-size: 14px;
   border: none;
   margin-top: 32px;
+  cursor: pointer;
 `;
