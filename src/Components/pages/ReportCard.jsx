@@ -174,6 +174,7 @@ const Wrapper = styled.div`
   padding-left: 50px;
   padding-right: 50px;
   border-radius: 20px;
+  overflow: auto;
 `;
 const Header = styled.h3`
   text-align: left;
@@ -220,13 +221,12 @@ const SubmitButton = styled.button`
 `;
 
 const CloseButton = styled.div`
-  background-color: white;
   width: 20px;
   height: 20px;
   z-index: 3;
   position: absolute;
-  top: 50%;
-  left: -3%;
+  top: 2%;
+  left: 2%;
   padding: 12px;
   border-radius: 50%;
   cursor: pointer;
