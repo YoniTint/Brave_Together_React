@@ -13,18 +13,23 @@ const menuButtons = [
   { name: Constants.STARRED_ACTION_TITLE, color:"#ffe135"},
 ];
 export default function MyActions({ userId }) {
-  const [currentAction, setCurrentState] = useState("Not Sure");
+  const [currentAction, setCurrentAction] = useState(Constants.NOT_SURE_ACTION_TITLE);
   const pageTitle = "Post activities";
   return (
     <Wrapper>
       <TitleStyle>{pageTitle}</TitleStyle>
       <MenuStyle>
       {menuButtons.map((menuButton) => {
-          return <ActionMenuButton menuButton={menuButton} setCurrentAction={setCurrentState} currentAction={currentAction} key={menuButton.name}/>;
+          return <ActionMenuButton
+              menuButton={menuButton}
+              setCurrentAction={setCurrentAction}
+              currentAction={currentAction}
+              key={menuButton.name}
+          />;
         })}
 
       </MenuStyle>
-      <MyActionPost ActionTypeOfPosts={currentAction} userId={userId}></MyActionPost>
+      <MyActionPost ActionTypeOfPosts={currentAction} userId={userId} currentAction={currentAction}></MyActionPost>
       
     </Wrapper>
   );

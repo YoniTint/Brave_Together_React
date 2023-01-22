@@ -3,7 +3,7 @@ import ValidateCard from "./ValidateCard";
 import styled from "styled-components";
 import useGetPosts from "../Hooks/useGetPosts";
 
-export default function Validate({ setOffensivePost }) {
+export default function Validate({ setOffensivePost, userId }) {
   const posts = useGetPosts();
   return (
     <Wrapper>
@@ -15,6 +15,7 @@ export default function Validate({ setOffensivePost }) {
               postData={post}
               style={ValidateCardStyle}
               setOffensivePost={setOffensivePost}
+              userId={userId}
             />
           );
         })}

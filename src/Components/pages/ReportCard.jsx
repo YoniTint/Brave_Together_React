@@ -5,6 +5,7 @@ import PostCard from "../Validate/PostCard";
 import axios from "axios";
 import postReport from "../Hooks/postReport";
 import ThankYouWindow from "../Validate/ThankYouWindow";
+import backButton from '../Validate/media/backButton.svg';
 
 const options = [
   "Minimizing the holocaust",
@@ -17,7 +18,7 @@ const onHandleSubmit = async (post, reasons, other, userId) => {
   const response = await postReport(post, reasons, other, userId);
 };
 
-export default function ReportCard({ post, userId }) {
+export default function ReportCard({ post, userId, hide }) {
   const [formData, setFormData] = useState({});
   const [didSendForm, setDidSendForm] = useState(false);
   console.log({ userId });
@@ -26,6 +27,9 @@ export default function ReportCard({ post, userId }) {
     return (
       <BlackBackground>
         <Wrapper>
+            <CloseButton onClick={hide}>
+                <img src={backButton} />
+            </CloseButton>
           <Header>Report Post</Header>
 
           <SubHeader>What defamation did you find here?</SubHeader>
@@ -98,9 +102,14 @@ export default function ReportCard({ post, userId }) {
 
   if (didSendForm)
     return (
-      <Wrapper>
-        <ThankYouWindow post={post.attributes} />
-      </Wrapper>
+        <BlackBackground>
+              <Wrapper>
+                  <CloseButton onClick={hide}>
+                      <img src={backButton} />
+                  </CloseButton>
+                <ThankYouWindow post={post.attributes} />
+              </Wrapper>
+        </BlackBackground>
     );
 }
 
@@ -158,8 +167,6 @@ const Wrapper = styled.div`
   z-index: 2; /* Sit on top */
   position: fixed;
   right: 0;
-  overflow-y: auto;
-  justify-content: top;
   flex-direction: column;
   background: white;
   width: 515px;
@@ -209,5 +216,18 @@ const SubmitButton = styled.button`
   font-size: 14px;
   border: none;
   margin-top: 32px;
+  cursor: pointer;
+`;
+
+const CloseButton = styled.div`
+  background-color: white;
+  width: 20px;
+  height: 20px;
+  z-index: 3;
+  position: absolute;
+  top: 50%;
+  left: -3%;
+  padding: 12px;
+  border-radius: 50%;
   cursor: pointer;
 `;

@@ -36,11 +36,11 @@ function App() {
           <MainPageStyle>
               <SideBar />
               <Routes>
-                <Route path="/" element={ <Validate setOffensivePost={setOffensivePost} /> } />
+                <Route path="/" element={ <Validate setOffensivePost={setOffensivePost} userId={userId} /> } />
                 <Route path="FAQ" element={<FAQ />} />
                 <Route path="/actions" element={<MyActions userId={userId}/>} />
               </Routes>
-                { offensivePost && <ReportCard post={offensivePost} userId={userId}/> }
+                { offensivePost && <ReportCard post={offensivePost} userId={userId} hide={() => setOffensivePost(null)} /> }
           </MainPageStyle>
         </QueryClientProvider>
     </BrowserRouter>

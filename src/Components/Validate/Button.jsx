@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import checkSafeButton from "./media/IconApprove.svg";
 import checkOffensiveButton from "./media/IconOffensive.svg";
 import styled from "styled-components";
+import postReportSafe from "../Hooks/postReportSafe";
 
 export default function Button({
   isOffensive,
   setOffensivePost,
-    postData
+    postData,
+    userId
 }) {
   return (
     <div
@@ -30,7 +32,7 @@ export default function Button({
       ) : (
         <span
           onClick={() => {
-            setOffensivePost();
+              postReportSafe(postData, userId)
           }}
           style={safeStyle}
         >

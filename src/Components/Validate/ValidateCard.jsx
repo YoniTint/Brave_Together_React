@@ -5,7 +5,8 @@ import PostCard from "./PostCard";
 
 export default function ValidateCard({
   postData,
-  setOffensivePost
+  setOffensivePost,
+    userId
 }) {
   return (
     <Wrapper>
@@ -17,6 +18,7 @@ export default function ValidateCard({
           isOffensive={false}
           setOffensivePost={setOffensivePost}
           postData={postData}
+          userId={userId}
         />
         <Button
           isOffensive={true}
