@@ -4,27 +4,55 @@ import PostInfo from "./PostInfo";
 import ListTags from "./ListTags";
 import { TwitterTweetEmbed } from "react-twitter-embed";
 
-export default function PostCard({ arrayTags, platform, date, postUrl }) {
+export default function PostCard({ postData }) {
+  if (!postData) {
+    return <div></div>;
+  }
   return (
     <Wrapper>
-      <PostInfo platform={platform} date={date} />
+      <PostInfo platform={postData.platform} date={postData.datePosted} />
 
       <Temp>
-        {platform === "facebook" && (
+        {postData.platform === "facebook" && (
           <iframe
-            src={`https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2F${postUrl}&width=441&show_text=true&height=336&appId`}
+            src={postData.url}
             width="441"
             height="336"
             scrolling="no"
-            frameborder="0"
-            allowfullscreen="true"
+            frameBorder="0"
+            allowFullScreen={true}
             allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
           ></iframe>
         )}
-        {platform === "twitter" && <TwitterTweetEmbed tweetId={postUrl} />}
+        {postData.platform === "twitter" && (
+          <TwitterTweetEmbed tweetId={postData.url} />
+        )}
       </Temp>
-      <ListTags arrayTags={arrayTags} />
-      <LinkToOriginalPostStyle>See Original Post</LinkToOriginalPostStyle>
+      <ListTags arrayTags={postData.tags} />
+      <LinkToOriginalPostStyle
+        onClick={() => {
+          if (postData.platform === "twitter") {
+            window.open(
+              `https://twitter.com/twitter/status/${postData.url}`,
+              "_blank"
+            );
+          } else if (postData.platform === "facebook") {
+            let pluginUrl = postData.url;
+
+            // Split the URL by "href="
+            let splitUrl = pluginUrl.split("href=");
+
+            // The actual post URL is the second item in the resulting array
+            let postUrl = splitUrl[1];
+
+            const decodedUrl = decodeURIComponent(postUrl);
+
+            window.open(decodedUrl, "_blank");
+          }
+        }}
+      >
+        See Original Post
+      </LinkToOriginalPostStyle>
     </Wrapper>
   );
 }
@@ -64,4 +92,5 @@ const LinkToOriginalPostStyle = styled.div`
   color: #2c63fd;
   margin-top: 24px;
   margin-left: calc(451px / 2 - (180px / 2));
+  cursor: pointer;
 `;

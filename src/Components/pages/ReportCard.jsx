@@ -5,6 +5,7 @@ import PostCard from "../Validate/PostCard";
 import axios from "axios";
 import postReport from "../Hooks/postReport";
 import ThankYouWindow from "../Validate/ThankYouWindow";
+import backButton from '../Validate/media/backButton.svg';
 
 const options = [
   "Minimizing the holocaust",
@@ -13,19 +14,22 @@ const options = [
   "Equating Israel to the Nazis",
 ];
 
-const onHandleSubmit = async (URL, reasons, other) => {
-  console.log(URL);
-  const response = await postReport(URL, reasons, other);
+const onHandleSubmit = async (post, reasons, other, userId) => {
+  const response = await postReport(post, reasons, other, userId);
 };
 
-export default function ReportCard({ arrayTags, date, platform, postUrl }) {
+export default function ReportCard({ post, userId, hide }) {
   const [formData, setFormData] = useState({});
   const [didSendForm, setDidSendForm] = useState(false);
+  console.log({ userId });
 
   if (didSendForm === false)
     return (
       <BlackBackground>
         <Wrapper>
+            <CloseButton onClick={hide}>
+                <img src={backButton} />
+            </CloseButton>
           <Header>Report Post</Header>
 
           <SubHeader>What defamation did you find here?</SubHeader>
@@ -66,9 +70,10 @@ export default function ReportCard({ arrayTags, date, platform, postUrl }) {
               onClick={async () => {
                 try {
                   await onHandleSubmit(
-                    postUrl,
+                    post,
                     formData.reasons,
-                    formData.other
+                    formData.other,
+                    userId
                   );
                   setDidSendForm(true);
                 } catch (error) {
@@ -90,32 +95,21 @@ export default function ReportCard({ arrayTags, date, platform, postUrl }) {
           </Form>
           <h4 style={{ textAlign: "left" }}>Selected Post:</h4>
 
-          <PostCard
-            arrayTags={[
-              "Alon",
-              "Ronder",
-              "Tag1",
-              "Tag2",
-              "Tag3",
-              "Tag4",
-              "Tag5",
-              "Tag6",
-              "Tag7",
-              "Tagggggggggg8",
-            ]}
-            platform={platform}
-            date={date}
-            postUrl={postUrl}
-          />
+          <PostCard postData={post.attributes} />
         </Wrapper>
       </BlackBackground>
     );
 
   if (didSendForm)
     return (
-      <Wrapper>
-        <ThankYouWindow />
-      </Wrapper>
+        <BlackBackground>
+              <Wrapper>
+                  <CloseButton onClick={hide}>
+                      <img src={backButton} />
+                  </CloseButton>
+                <ThankYouWindow post={post.attributes} />
+              </Wrapper>
+        </BlackBackground>
     );
 }
 
@@ -173,8 +167,6 @@ const Wrapper = styled.div`
   z-index: 2; /* Sit on top */
   position: fixed;
   right: 0;
-  overflow-y: auto;
-  justify-content: top;
   flex-direction: column;
   background: white;
   width: 515px;
@@ -182,6 +174,7 @@ const Wrapper = styled.div`
   padding-left: 50px;
   padding-right: 50px;
   border-radius: 20px;
+  overflow: auto;
 `;
 const Header = styled.h3`
   text-align: left;
@@ -224,4 +217,17 @@ const SubmitButton = styled.button`
   font-size: 14px;
   border: none;
   margin-top: 32px;
+  cursor: pointer;
+`;
+
+const CloseButton = styled.div`
+  width: 20px;
+  height: 20px;
+  z-index: 3;
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  padding: 12px;
+  border-radius: 50%;
+  cursor: pointer;
 `;
